@@ -17,17 +17,17 @@ public class LocalPlayerManager : MonoBehaviourPun
         }
     }
 
-    void awake() {
-        if(photonView.IsMine) {
-            LocalPlayerManager.LocalPlayerCharacter = gameObject;
-        }
-    }
 
     // Start is called before the first frame update
     void Start()
     {
-        // ONLY ENABLE VIEW and INTERACT UI ON THE LOCAL CHARACTER
-        if(photonView.IsMine){
+        Debug.Log("Character spawning...");
+        if(photonView.IsMine) {
+            // ESTABLISH SELF AS THE LOCAL CHARACTER
+            LocalPlayerManager.LocalPlayerCharacter = gameObject;
+            Debug.Log(LocalPlayerCharacter);
+
+            // ONLY ENABLE VIEW and INTERACT UI ON THE LOCAL CHARACTER
             transform.Find("Main Camera").gameObject.SetActive(true);
             transform.Find("InteractArea").gameObject.SetActive(true);
         }

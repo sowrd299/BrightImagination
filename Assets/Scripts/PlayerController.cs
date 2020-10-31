@@ -9,14 +9,29 @@ public class PlayerController : MonoBehaviourPun
     // MOVEMENT ADJUSTMENTS
     public LayerMask UseForJump;
     public float speed = 10;
-    public float jumpPower = 800;
+    public float jumpPower = 400;
     public float dragFactor = 0.9f;
     public float minY = -40;
+
+
+    // COMBAT ADJUSTMENTS
+    public string attackDir = "Prefabs/Attacks";
+    public GameObject mainAttack;
+
 
     // COMPONENTS
     private Rigidbody2D rigidBody;
     private Death death;
     private Interactor interactor;
+
+
+    // ACTION STATES
+    private GameObject currentAttack;
+    public GameObject CurrentAttack {
+        set{
+            currentAttack = value;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +39,9 @@ public class PlayerController : MonoBehaviourPun
         rigidBody = GetComponent<Rigidbody2D>();
         death = GetComponent<Death>();
         interactor = GetComponentInChildren<Interactor>();
+
+        // TESTING
+        mainAttack = Resources.Load<GameObject>("Prefabs/Attacks/Mace") as GameObject;
     }
 
     // Update is called once per frame
@@ -63,8 +81,15 @@ public class PlayerController : MonoBehaviourPun
                     interactor.Target?.Interact(gameObject);
                 }
 
+                // ACTIVATE MAIN ATTACK
+                if(!currentAttack && Input.GetButtonDown("MainFire")){
+                    PhotonNetwork.Instantiate(attackDir + "/" + mainAttack.name, transform.position, transform.rotation, 0);
+                }
+
             }
 
+
+            // CAN FORCE RESPAWN IF YOU GET STUCK :(
             if(Input.GetButtonDown("Respawn")){
                 death.Die();
             }
