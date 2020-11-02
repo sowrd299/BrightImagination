@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5768483342419193135}
   - component: {fileID: 5768483342419193132}
   m_Layer: 8
-  m_Name: KoEyeEEquipement
+  m_Name: KoEyeE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -3662,7 +3662,7 @@ PrefabInstance:
     - target: {fileID: 5768483342419193134, guid: e3a4cb37c36c440e8bb7c1417407239b,
         type: 3}
       propertyPath: m_Name
-      value: KoEyeEEquipement
+      value: KoEyeE
       objectReference: {fileID: 0}
     - target: {fileID: 5768483342419193135, guid: e3a4cb37c36c440e8bb7c1417407239b,
         type: 3}
