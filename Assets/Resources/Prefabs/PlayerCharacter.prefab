@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59ba926d496d9d486b2b8244ff23f8d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UseForJump:
+  groundLayer:
     serializedVersion: 2
     m_Bits: 1
   speed: 10

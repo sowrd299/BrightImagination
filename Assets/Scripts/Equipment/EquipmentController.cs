@@ -10,15 +10,15 @@ public class EquipmentController : MonoBehaviour
 {
 
     // TODO: Use a generalized controller that supports monsters and NPC's
-    private PlayerController playerController;
+    private MovementController playerController;
 
     private int oldFacing;
 
     // Start is called before the first frame update
     void Start()
     {
-        playerController = GetComponentInParent<PlayerController>();
-        oldFacing = 1;
+        playerController = GetComponentInParent<MovementController>();
+        oldFacing = 1; // NOTE: ALL EQUIPMENT SHOULD DEFAULT TO FACING RIGHT
     }
 
     // Update is called once per frame

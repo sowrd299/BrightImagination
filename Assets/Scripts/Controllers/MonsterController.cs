@@ -4,14 +4,10 @@ using UnityEngine;
 
 
 // TODO: Merge this with player controller?
-public class MonsterController : MonoBehaviour
+public class MonsterController : MovementController
 {
 
-    public LayerMask groundLayer;
-    public float speed = 5;
     public float lookAheadDist = 2;
-
-    private Vector3 dir;
 
     new private Rigidbody2D rigidbody;
 
@@ -20,11 +16,8 @@ public class MonsterController : MonoBehaviour
     {
         dir = transform.right;
         rigidbody = GetComponent<Rigidbody2D>();
-    }
 
-    private RaycastHit2D groundCheck(float lookAheadDist){
-        RaycastHit2D hit = Physics2D.Raycast(transform.position + dir * lookAheadDist, -transform.up, 0.6f, groundLayer);
-        return hit;
+        facing = 1;
     }
 
     // Update is called once per frame
@@ -36,6 +29,7 @@ public class MonsterController : MonoBehaviour
         RaycastHit2D aheadHit = groundCheck(lookAheadDist);
         if(!aheadHit){
             dir *= -1;
+            facing *= -1;
         }
 
         // hard stop at edge

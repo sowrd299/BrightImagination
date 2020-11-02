@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class PlayerController : MonoBehaviourPun, IPunObservable
+public class PlayerController : MovementController
 {
 
     // MOVEMENT ADJUSTMENTS
-    public LayerMask UseForJump;
-    public float speed = 10;
     public float jumpPower = 400;
     public float dragFactor = 0.9f;
     public float minY = -40;
@@ -30,14 +28,6 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
     public GameObject CurrentAttack {
         set{
             currentAttack = value;
-        }
-    }
-
-    // -1 for left, 0 for forward, 1 for right
-    private int facing;
-    public int Facing{
-        get{
-            return facing;
         }
     }
 
@@ -67,7 +57,7 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
         if (photonView.IsMine || !PhotonNetwork.IsConnected) {
 
             // IF THE PLAYER IS ON THE GROUND...
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, -transform.up, 0.6f, UseForJump);
+            RaycastHit2D hit = groundCheck(0);
             if(hit.collider) {
                 
                 // LATERAL MOVEMENT
@@ -111,14 +101,5 @@ public class PlayerController : MonoBehaviourPun, IPunObservable
 
         }
         
-    }
-
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
-        if(stream.IsWriting){
-            stream.SendNext(facing);
-        }else{
-            // catchup on damage
-            facing = (int)stream.ReceiveNext();
-        }
     }
 }
