@@ -6,6 +6,7 @@ using Photon.Pun;
 /**
  A script that should go on all attack objects
  Handles logging and such
+ Also handles matching the basic transform properties of the player
  */
 public class AttackController : MonoBehaviourPun
 {
@@ -24,7 +25,13 @@ public class AttackController : MonoBehaviourPun
             transform.SetParent(LocalPlayerManager.LocalPlayerCharacter.transform);
             */
             player = LocalPlayerManager.LocalPlayerCharacter.transform;
-            player.GetComponent<PlayerController>().CurrentAttack = gameObject;
+            PlayerController pc = player.GetComponent<PlayerController>();
+            pc.CurrentAttack = gameObject;
+
+            // face in the same direction as the player
+            if(pc.Facing < 0){
+                transform.Rotate(0, 180, 0);
+            }
         }
     }
 

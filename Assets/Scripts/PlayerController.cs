@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class PlayerController : MonoBehaviourPun
+public class PlayerController : MonoBehaviourPun, IPunObservable
 {
 
     // MOVEMENT ADJUSTMENTS
@@ -33,12 +33,22 @@ public class PlayerController : MonoBehaviourPun
         }
     }
 
+    // -1 for left, 0 for forward, 1 for right
+    private int facing;
+    public int Facing{
+        get{
+            return facing;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
         death = GetComponent<Death>();
         interactor = GetComponentInChildren<Interactor>();
+
+        facing = 0;
 
         // TESTING
         mainAttack = Resources.Load<GameObject>("Prefabs/Attacks/Mace") as GameObject;
@@ -62,6 +72,11 @@ public class PlayerController : MonoBehaviourPun
                 
                 // LATERAL MOVEMENT
                 rigidBody.AddForce(speed * transform.right * Input.GetAxis("Horizontal"));
+
+                // update facing to reflect movement; prevent it from being 0
+                if(Input.GetButton("Horizontal")){
+                    facing = (int)Input.GetAxis("Horizontal");
+                }
 
                 // DRAG
                 if(!Input.GetButton("Horizontal")) {
@@ -96,5 +111,14 @@ public class PlayerController : MonoBehaviourPun
 
         }
         
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
+        if(stream.IsWriting){
+            stream.SendNext(facing);
+        }else{
+            // catchup on damage
+            facing = (int)stream.ReceiveNext();
+        }
     }
 }

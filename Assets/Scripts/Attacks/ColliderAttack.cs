@@ -29,9 +29,12 @@ public class ColliderAttack : MonoBehaviourPun
     void OnTriggerEnter2D(Collider2D other) {
         Death target = other.GetComponent<Death>();
         if(target){
-            target.Damage(damage, team);
+            attack(target);
         }
     }
 
+    virtual protected void attack(Death target){
+        target.Damage(damage, team);
+    }
 
 }

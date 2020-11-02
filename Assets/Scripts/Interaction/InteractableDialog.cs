@@ -6,6 +6,7 @@ using TMPro;
 public class InteractableDialog : Interactable
 {
 
+    [TextArea(3,10)]
     public string dialog = "<b>Wizened One</b>\nHello Traveler! Welcome to Port Teviam! I believe you have many amazing adventures ahead of you; don't you?";
     public string canvasName = "Canvas";
 

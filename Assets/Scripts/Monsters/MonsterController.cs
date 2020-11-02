@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+// TODO: Merge this with player controller?
 public class MonsterController : MonoBehaviour
 {
 
+    public LayerMask groundLayer;
     public float speed = 5;
     public float lookAheadDist = 2;
 
@@ -20,7 +23,7 @@ public class MonsterController : MonoBehaviour
     }
 
     private RaycastHit2D groundCheck(float lookAheadDist){
-        RaycastHit2D hit = Physics2D.Raycast(transform.position + dir * lookAheadDist, -transform.up, 0.6f);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position + dir * lookAheadDist, -transform.up, 0.6f, groundLayer);
         return hit;
     }
 
@@ -37,7 +40,8 @@ public class MonsterController : MonoBehaviour
 
         // hard stop at edge
         RaycastHit2D edgeHit = groundCheck(1f);
-        if(!edgeHit){
+        RaycastHit2D groundHit = groundCheck(0f);
+        if(!edgeHit  && groundHit){
             rigidbody.velocity = Vector3.zero;
         }
     }

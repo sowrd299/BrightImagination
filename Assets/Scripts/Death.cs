@@ -27,6 +27,15 @@ public class Death : MonoBehaviourPun, IPunObservable
     }
 
 
+    // timestamps for damage flash
+    private float timeDamaged = -100;
+    public float TimeDamaged{
+        get{
+            return timeDamaged;
+        }
+    }
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -61,6 +70,9 @@ public class Death : MonoBehaviourPun, IPunObservable
             hp = maxHP;
             Die();
         }
+
+        // log time damaged
+        timeDamaged = Time.time;
     }
 
     /**

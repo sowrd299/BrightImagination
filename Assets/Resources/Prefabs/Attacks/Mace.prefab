@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 3173513438298277891}
   - component: {fileID: 7657683976034436567}
   - component: {fileID: 5665000421828746645}
-  - component: {fileID: 5807475866328457505}
+  - component: {fileID: 2876537542750143083}
   m_Layer: 0
   m_Name: Mace
   m_TagString: Untagged
@@ -202,7 +202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalRotation: {x: 0, y: 0, z: -360}
   totalTime: 1
---- !u!114 &5807475866328457505
+--- !u!114 &2876537542750143083
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -211,11 +211,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6147772068284536358}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce782d120fe4a772488c5fce810139a6, type: 3}
+  m_Script: {fileID: 11500000, guid: 0c19504f6beb11a6bbf73d672099ab70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 15
   team: player
+  pushPower: 100
 --- !u!1 &6147772068705631986
 GameObject:
   m_ObjectHideFlags: 0
