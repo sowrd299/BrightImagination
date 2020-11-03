@@ -6443,8 +6443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1be721166c6ba8e1d8d8a00d8971638b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnLocName: SpawnLocation
-  spawnLoc: {fileID: 0}
+  spawnLocName: 
   team: monster
   maxHP: 100
 --- !u!50 &1905103521
@@ -7509,7 +7508,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnLocName: SpawnLocation
-  spawnLoc: {fileID: 0}
   team: player
   maxHP: 100
 --- !u!1001 &5768483344034177214

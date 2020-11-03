@@ -25,10 +25,12 @@ public class Spawner : MonoBehaviourPun
 
         // get all children
         instances = new List<GameObject>();
-        foreach(Transform t in transform){
-            if(t != transform){
-                instances.Add(t.gameObject);
-            }
+        foreach(Death t in GetComponentsInChildren<Death>()){
+            instances.Add(t.gameObject);
+
+            // configure respawn style
+            t.DoDeativate = true;
+            t.spawnPos = t.transform.position;
         }
 
         indFirstActive = 0;

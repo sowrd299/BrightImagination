@@ -113,7 +113,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnLocName: SpawnLocation
-  spawnLoc: {fileID: 0}
   team: player
   maxHP: 100
 --- !u!114 &5739156032799977011

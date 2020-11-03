@@ -7,10 +7,12 @@ public class InteractablePickup : Interactable
 {
 
     private Inventory inventory;
+    private Death death;
 
     new void Start(){
         base.Start();
         inventory = GetComponent<Inventory>();
+        death = GetComponent<Death>();
     }
 
     public override void Interact(GameObject player){
@@ -28,18 +30,8 @@ public class InteractablePickup : Interactable
     Should always handle destroying the object
     Prevents the object from being destroyed if it could be respawned
     */
-    // TODO: Generalize this code
     private void destroy(){
-        photonView.RPC("_destroy", RpcTarget.All);
-    }
-
-    [PunRPC]
-    private void _destroy(PhotonMessageInfo info){
-        if(GetComponentInParent<Spawner>()){
-            gameObject.SetActive(false);
-        }else{
-            PhotonNetwork.Destroy(gameObject);
-        }
+        death?.Die();
     }
 
 }

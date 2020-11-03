@@ -6,12 +6,23 @@ using Photon.Pun;
 /**
 A script for all mortal and damagable things
 */
+// TODO: Maybe break this into multiple scripts?
 public class Death : MonoBehaviourPun, IPunObservable
 {
 
     // spawn location config
-    public string spawnLocName = "SpawnLocation";
-    public GameObject spawnLoc;
+    public string spawnLocName = "";
+    public Vector3? spawnPos;
+
+    // setting this to true will force the object to die by deactiving itself
+    // the object will wait to be reactivated by another script
+    private bool doDeactivate = false;
+    public bool DoDeativate{
+        set{
+            doDeactivate = value;
+        }
+    }
+
 
     // components
     new private Rigidbody2D rigidbody;
@@ -40,7 +51,7 @@ public class Death : MonoBehaviourPun, IPunObservable
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
-        spawnLoc = GameObject.Find(spawnLocName);
+        spawnPos = GameObject.Find(spawnLocName)?.transform.position;
 
         hp = maxHP;
     }
@@ -76,12 +87,35 @@ public class Death : MonoBehaviourPun, IPunObservable
     }
 
     /**
-     To be called when the player dies
-     Handles killing and respawning the player
+     To be called when the object dies
+     Handles killing the player
+     Will also handles respawing IF that is configured
      */
     public void Die(){
-        transform.position = spawnLoc.transform.position;
-        rigidbody.velocity = Vector3.zero;
+        photonView.RPC("_die", RpcTarget.All);
+    }
+
+    // to only ever be called by Die, so that all game copies agree
+    [PunRPC]
+    private void _die(PhotonMessageInfo info){
+
+        bool respawning = false;
+
+        if(doDeactivate){
+            gameObject.SetActive(false);
+            respawning = true;
+        }
+        
+        if(spawnPos != null){
+            transform.position = (Vector3)spawnPos;
+            rigidbody.velocity = Vector3.zero;
+            respawning = true;
+        }
+
+        if(!respawning){
+            PhotonNetwork.Destroy(gameObject);
+        }
+
     }
 
 
