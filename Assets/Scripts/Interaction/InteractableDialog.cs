@@ -16,7 +16,7 @@ public class InteractableDialog : Interactable
     new void Start()
     {
         base.Start();
-        dialogUI = GameObject.Find(canvasName).GetComponentInChildren<DialogUI>();
+        dialogUI = GameObject.Find(canvasName).GetComponent<HudController>().Dialog;
     }
 
     // Update is called once per frame

@@ -7,6 +7,9 @@ A class for UI's that open up on the HUD
 */
 public class HudUI : MonoBehaviour
 {
+
+    private HudController controller;
+
     private bool _status;
     protected bool status{
         get{
@@ -20,6 +23,7 @@ public class HudUI : MonoBehaviour
     // Start is called before the first frame update
     protected void Start()
     {
+        controller = GetComponentInParent<HudController>();
         status = false;
     }
 
@@ -29,6 +33,7 @@ public class HudUI : MonoBehaviour
         if(!status) gameObject.SetActive(status);
     }
     public void Display() {
+        controller.ClearAll();
         status = true;
     }
 

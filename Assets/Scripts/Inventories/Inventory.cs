@@ -5,6 +5,8 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
 
+    public List<Item> startingItems;
+
     private Dictionary<Item, int> items;
     public Dictionary<Item, int> Items{
         get{
@@ -14,12 +16,9 @@ public class Inventory : MonoBehaviour
 
     void Start(){
         items = new Dictionary<Item, int>();
-
-        // testing
-        Item startingItem = Resources.Load<EquipmentItem>("Items/KoEyeE");
-        Add(startingItem);
-        Item startingItem1 = Resources.Load<EquipmentItem>("Items/KoEyeO");
-        Add(startingItem1);
+        foreach(Item i in startingItems){
+            Add(i);
+        }
     }
 
     public void Add(Item item, int count = 1){
