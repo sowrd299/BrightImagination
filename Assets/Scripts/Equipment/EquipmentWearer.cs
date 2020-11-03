@@ -12,7 +12,7 @@ public class EquipmentWearer : MonoBehaviourPun
     // Start is called before the first frame update
     void Start()
     {
-        Equip("KoEyeE");
+
     }
 
     // Update is called once per frame

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6147772067456367660}
   - component: {fileID: 6147772067456367661}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: V Spikes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 7657683976034436567}
   - component: {fileID: 5665000421828746645}
   - component: {fileID: 2876537542750143083}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Mace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -227,7 +227,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6147772068705631987}
   - component: {fileID: 6147772068705631984}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: H Spikes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -308,7 +308,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6147772069309696177}
   - component: {fileID: 6147772069309696142}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -389,7 +389,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6147772069461157588}
   - component: {fileID: 6147772069461157589}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Core
   m_TagString: Untagged
   m_Icon: {fileID: 0}
