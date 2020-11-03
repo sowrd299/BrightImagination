@@ -9,7 +9,6 @@ public class PlayerController : MovementController
     // MOVEMENT ADJUSTMENTS
     public float jumpPower = 400;
     public float dragFactor = 0.9f;
-    public float minY = -40;
 
 
     // COMBAT ADJUSTMENTS
@@ -19,7 +18,6 @@ public class PlayerController : MovementController
 
     // COMPONENTS
     private Rigidbody2D rigidBody;
-    private Death death;
     private Interactor interactor;
 
 
@@ -32,10 +30,11 @@ public class PlayerController : MovementController
     }
 
     // Start is called before the first frame update
-    void Start()
+    new void Start()
     {
+        base.Start();
+
         rigidBody = GetComponent<Rigidbody2D>();
-        death = GetComponent<Death>();
         interactor = GetComponentInChildren<Interactor>();
 
         facing = 0;
@@ -47,12 +46,6 @@ public class PlayerController : MovementController
     // Update is called once per frame
     void FixedUpdate()
     {
-
-        // FAIL SALE FOR FALLING OFF THE WORLD
-        if(transform.position.y < minY){
-            death.Die();
-        }
-
         // PREVENT PLAYERS FROM CONTROLLING OTHER PEOPLE'S AVATARS
         if (photonView.IsMine || !PhotonNetwork.IsConnected) {
 

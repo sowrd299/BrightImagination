@@ -95,9 +95,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   speed: 10
+  minY: -40
   jumpPower: 400
   dragFactor: 0.9
-  minY: -40
   attackDir: Prefabs/Attacks
   mainAttack: {fileID: 0}
 --- !u!114 &5739156032799977008

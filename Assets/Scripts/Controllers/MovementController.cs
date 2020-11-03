@@ -12,6 +12,8 @@ public abstract class MovementController : MonoBehaviourPun, IPunObservable
     public LayerMask groundLayer;
     public float speed = 5;
 
+    public float minY = -40;
+    protected Death death;
 
     // tracks the direction the Mover is TRAVELING
     private Vector3 _dir;
@@ -34,14 +36,18 @@ public abstract class MovementController : MonoBehaviourPun, IPunObservable
     }
 
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
-        
+        death = GetComponent<Death>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        // FAIL SALE FOR FALLING OFF THE WORLD
+        if(photonView.IsMine && transform.position.y < minY){
+            death?.Die();
+        }
         
     }
 
