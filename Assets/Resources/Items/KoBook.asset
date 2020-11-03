@@ -13,17 +13,15 @@ MonoBehaviour:
   m_Name: KoBook
   m_EditorClassIdentifier: 
   name: <i>About the Ko</i>
-  text: 'by Jem Atri, with Ko Author Kuo Dedem
+  text: '<b>Understanding the Ko</b> by Jem Atri, with Ko Author Kuo Dedem
 
     ...
 
-    <b>Understanding the
-    Ko, Chapter 2</b>
-
-    One of the most striking things about the Ko is that they
-    work always in pairs. The idea of being alone, or even of being in an odd-numbered
-    group, is unthinkable in Ko society. Ko pairings tend to last a very long time,
-    but are not romantic. It is not uncommon to see quartets form, where both members
+    <b>Chapter
+    2:</b> One of the most striking things about the Ko is that they work always
+    in pairs. The idea of being alone, or even of being in an odd-numbered group,
+    is unthinkable in Ko society. Ko pairings tend to last a very long time, but
+    are not romantic. It is not uncommon to see quartets form, where both members
     of a partnership becomes romantically involved with opposite members of another
     parntership. The Ko have cited the power of two minds over one as a leading factor
     in the success of their Ko-Opperations, but this has yet to be varrified.'

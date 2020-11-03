@@ -21,7 +21,25 @@ public class InteractablePickup : Interactable
                 to.Add(pair.Key, pair.Value);
             }
         }
-        PhotonNetwork.Destroy(gameObject);
+        destroy();
+    }
+
+    /**
+    Should always handle destroying the object
+    Prevents the object from being destroyed if it could be respawned
+    */
+    // TODO: Generalize this code
+    private void destroy(){
+        photonView.RPC("_destroy", RpcTarget.All);
+    }
+
+    [PunRPC]
+    private void _destroy(PhotonMessageInfo info){
+        if(GetComponentInParent<Spawner>()){
+            gameObject.SetActive(false);
+        }else{
+            PhotonNetwork.Destroy(gameObject);
+        }
     }
 
 }

@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 using TMPro;
 
-public abstract class Interactable : MonoBehaviour
+public abstract class Interactable : MonoBehaviourPun
 {
 
     public string text = "!";
