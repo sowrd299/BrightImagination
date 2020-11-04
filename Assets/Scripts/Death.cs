@@ -64,23 +64,31 @@ public class Death : MonoBehaviourPun, IPunObservable
 
     }
 
+    public void Heal(float health) {
+        if(photonView.IsMine){
+            this.updateHP(health);
+        }
+    }
+
     /**
     Always use this call when initiating new damage
     Damage will be prevented if it from the same team as this script
     */
     public void Damage(float damage, string team = ""){
         if(photonView.IsMine && team != this.team){
-            this.damage(damage);
+            this.updateHP(-1 * damage);
         }
     }
 
     /**
     Only to be used by damage or when responding to net streams
     */
-    private void damage(float damage){
-        hp -= damage;
+    private void updateHP(float health){
+        hp += health;
         if(hp < 0){
             Die();
+        }else if(hp > maxHP){
+            hp = maxHP;
         }
 
         // log time damaged
@@ -130,7 +138,7 @@ public class Death : MonoBehaviourPun, IPunObservable
             // catchup on damage
             float hp = (float)stream.ReceiveNext();
             if(hp != this.hp){
-                damage(this.hp - hp);
+                updateHP(hp - this.hp);
             }
         }
     }
