@@ -23,8 +23,10 @@ public class MonsterController : MovementController
     }
 
     // Update is called once per frame
-    void Update()
+    new void Update()
     {
+        base.Update();
+
         rigidbody.AddForce(dir * speed);
 
         // turn around when appropriate

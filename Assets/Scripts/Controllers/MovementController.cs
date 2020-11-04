@@ -42,7 +42,7 @@ public abstract class MovementController : MonoBehaviourPun, IPunObservable
     }
 
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
         // FAIL SALE FOR FALLING OFF THE WORLD
         if(photonView.IsMine && transform.position.y < minY){

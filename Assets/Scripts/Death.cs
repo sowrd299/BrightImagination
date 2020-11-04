@@ -40,8 +40,8 @@ public class Death : MonoBehaviourPun, IPunObservable
 
     // timestamps for damage flash
     private float timeDamaged = -100;
-    public float TimeDamaged{
-        get{
+    public float TimeDamaged {
+        get {
             return timeDamaged;
         }
     }
@@ -51,7 +51,9 @@ public class Death : MonoBehaviourPun, IPunObservable
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
-        spawnPos = GameObject.Find(spawnLocName)?.transform.position;
+        if(spawnPos == null) {
+            spawnPos = GameObject.Find(spawnLocName)?.transform.position;
+        }
 
         hp = maxHP;
     }
@@ -78,7 +80,6 @@ public class Death : MonoBehaviourPun, IPunObservable
     private void damage(float damage){
         hp -= damage;
         if(hp < 0){
-            hp = maxHP;
             Die();
         }
 
@@ -112,7 +113,9 @@ public class Death : MonoBehaviourPun, IPunObservable
             respawning = true;
         }
 
-        if(!respawning){
+        if(respawning){
+            hp = maxHP; // regain health WHENEVER die
+        }else{
             PhotonNetwork.Destroy(gameObject);
         }
 
