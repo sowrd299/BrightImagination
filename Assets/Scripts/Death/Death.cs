@@ -23,7 +23,6 @@ public class Death : MonoBehaviourPun, IPunObservable
         }
     }
 
-
     // components
     new private Rigidbody2D rigidbody;
     

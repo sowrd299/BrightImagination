@@ -8,7 +8,7 @@ Manages periodically respawning a group of objects
 The group of objects it manages respawning is exactly its children
 Said objects should deactivate themselves instead of destroying themselves
 */
-public class Spawner : MonoBehaviourPun
+public class Spawner : MonoBehaviourPun, IPunObservable
 {
 
     //public string prefabDir = "Prefabs";
@@ -59,15 +59,24 @@ public class Spawner : MonoBehaviourPun
     }
 
     private void respawnAll(){
-        photonView.RPC("_respawnAll", RpcTarget.All);
-    }
-
-    [PunRPC]
-    private void _respawnAll(PhotonMessageInfo info){
+        Debug.Log("Respawning all instances from spawner");
         foreach(GameObject go in instances){
             go.SetActive(true);
         }
         indFirstActive = 0;
+    }
+
+    // sync the activation status of all children
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info) {
+        if(stream.IsWriting){
+            foreach(GameObject go in instances){
+                stream.SendNext(go.activeInHierarchy);
+            }
+        } else {
+            foreach(GameObject go in instances){
+                go.SetActive((bool)stream.ReceiveNext());
+            }
+        }
     }
 
 }

@@ -5079,7 +5079,7 @@ GameObject:
   - component: {fileID: 1396840255}
   - component: {fileID: 1396840256}
   m_Layer: 0
-  m_Name: Upper Stair (1)
+  m_Name: Jelly Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5093,7 +5093,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1396840254}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 14, y: 3.2, z: -0.24707031}
+  m_LocalPosition: {x: 12.08, y: -4.75, z: -0.24707031}
   m_LocalScale: {x: 2.8428726, y: 0.93362, z: 0.93362}
   m_Children:
   - {fileID: 1004954059}
@@ -6337,12 +6337,12 @@ PrefabInstance:
     - target: {fileID: 4571491367799892177, guid: 5fc386bc46f7ce22ca912b516cfce636,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -21.22
+      value: 33.31
       objectReference: {fileID: 0}
     - target: {fileID: 4571491367799892177, guid: 5fc386bc46f7ce22ca912b516cfce636,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.95
+      value: 5.08
       objectReference: {fileID: 0}
     - target: {fileID: 4571491367799892177, guid: 5fc386bc46f7ce22ca912b516cfce636,
         type: 3}
@@ -7546,7 +7546,7 @@ MonoBehaviour:
 
     Hello Traveler! Welcome to Port Teviam! (province
     under gracious Ko leadership yada yada yada...) I believe you have many amazing
-    adventures ahead of you; don''t you?'
+    adventures ahead of you; don''t you? Off to thwart the viral menace?'
   canvasName: Canvas
 --- !u!114 &5137844404889638823
 MonoBehaviour:
