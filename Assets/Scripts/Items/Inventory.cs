@@ -14,14 +14,25 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    void Start(){
-        items = new Dictionary<Item, int>();
-        foreach(Item i in startingItems){
-            Add(i);
+    private void initItems(){
+        if(items == null){
+            Empty();
+            foreach(Item i in startingItems){
+                Add(i);
+            }
         }
     }
 
+    void Start(){
+        initItems();
+    }
+
+    /**
+    CAN safely be called from other starts
+    Will initialize the inventory early in that case
+    */
     public void Add(Item item, int count = 1){
+        initItems();
         if(!items.ContainsKey(item)){
             items.Add(item, 0);
         }
@@ -35,6 +46,10 @@ public class Inventory : MonoBehaviour
                 items.Remove(item);
             }
         }
+    }
+
+    public void Empty() {
+        items = new Dictionary<Item, int>();
     }
 
 }

@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
+
+public interface DeathListener
+{
+    void OnDeath();
+}
+
+
 /**
 A script for all mortal and damagable things
 */
@@ -107,6 +114,11 @@ public class Death : MonoBehaviourPun, IPunObservable
     [PunRPC]
     private void _die(PhotonMessageInfo info){
 
+        // handle death listeners; do this before reset values
+        foreach(DeathListener dl in GetComponents<DeathListener>()){
+            dl.OnDeath();
+        }
+
         bool respawning = false;
 
         if(doDeactivate){
@@ -122,7 +134,7 @@ public class Death : MonoBehaviourPun, IPunObservable
 
         if(respawning){
             hp = maxHP; // regain health WHENEVER die
-        }else{
+        }else if(photonView.IsMine) {
             PhotonNetwork.Destroy(gameObject);
         }
 

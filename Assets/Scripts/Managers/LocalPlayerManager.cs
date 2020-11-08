@@ -17,9 +17,15 @@ public class LocalPlayerManager : MonoBehaviourPun
         }
     }
 
+    // some sugar to keep my life easy
+    public static int ViewID{
+        get{
+            return LocalPlayerCharacter.GetComponent<PhotonView>().ViewID;
+        }
+    }
 
-    // Start is called before the first frame update
-    void Start()
+
+    void Awake()
     {
         Debug.Log("Character spawning...");
         if(photonView.IsMine) {

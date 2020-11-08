@@ -221,6 +221,8 @@ GameObject:
   - component: {fileID: 4571491367799892166}
   - component: {fileID: 4571491367799892167}
   - component: {fileID: 8007533645727418477}
+  - component: {fileID: 5966378431954749505}
+  - component: {fileID: -5053839490982229305}
   m_Layer: 8
   m_Name: ItemPickup
   m_TagString: Untagged
@@ -280,7 +282,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &4571491367799892164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,9 +295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d9770ba0603c4dba919a860d106338b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingItems:
-  - {fileID: 11400000, guid: 09fac23fe87c9745184477775680a2c1, type: 2}
-  - {fileID: 11400000, guid: 9d459b0ad01605d2d89a5f8a5fe9c280, type: 2}
+  startingItems: []
 --- !u!114 &4571491367799892187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,6 +331,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 4571491367799892167}
   - {fileID: 8007533645727418477}
+  - {fileID: 5966378431954749505}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -364,6 +365,32 @@ MonoBehaviour:
   spawnLocName: 
   team: player
   maxHP: 100
+--- !u!114 &5966378431954749505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4571491367799892186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d539062611a7a3f996d757e64f04b31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeRestricted: 20
+--- !u!114 &-5053839490982229305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4571491367799892186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 805cbce96bc2e27d5a526089b68d2086, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemDir: Items
 --- !u!1 &4571491369396686276
 GameObject:
   m_ObjectHideFlags: 0

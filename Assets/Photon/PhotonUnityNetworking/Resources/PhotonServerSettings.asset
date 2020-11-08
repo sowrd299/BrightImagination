@@ -42,6 +42,7 @@ MonoBehaviour:
   - _destroy
   - _respawnAll
   - _die
+  - EndRestriction
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
