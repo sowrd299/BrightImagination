@@ -45,7 +45,7 @@ public class InventoryUI : HudUI
                 slots[i].SetActive(true);
 
                 // show the right text
-                slots[i].GetComponentInChildren<TMP_Text>().text = pair.Key.name;
+                slots[i].GetComponentInChildren<TMP_Text>().text = pair.Key.itemName;
 
                 // setup the listener to handle using the item
                 slots[i].GetComponent<Button>().onClick.RemoveAllListeners();

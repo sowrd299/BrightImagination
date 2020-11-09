@@ -166,6 +166,8 @@ MonoBehaviour:
   prefabDir: Prefabs
   itemDropPrefab: {fileID: 4571491367799892186, guid: 5fc386bc46f7ce22ca912b516cfce636,
     type: 3}
+  dropItems:
+  - {fileID: 11400000, guid: ca95378f21a81d39a8f44922708e212b, type: 2}
 --- !u!1 &6886093084181790458
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,10 +14,16 @@ public class DeathDropper : MonoBehaviourPun, DeathListener
     // the prefab (with an inventory) to drop on death
     public GameObject itemDropPrefab;
 
+    public List<Item> dropItems;
+    private string[] dropItemNames;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        dropItemNames = new string[dropItems.Count];
+        for(int i = 0; i < dropItems.Count; i++) {
+            dropItemNames[i] = dropItems[i].name;
+        }
     }
 
     // Update is called once per frame
@@ -31,7 +37,7 @@ public class DeathDropper : MonoBehaviourPun, DeathListener
             object[] data =  { 
                 // testing
                 new int[]{LocalPlayerManager.ViewID},
-                new string[]{ "WeakJelly" }
+                dropItemNames
             };
             PhotonNetwork.Instantiate(prefabDir + "/" + itemDropPrefab.name, transform.position, transform.rotation, 0, data);
         }

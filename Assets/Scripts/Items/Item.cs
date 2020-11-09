@@ -6,7 +6,7 @@ using UnityEngine;
 public class Item : ScriptableObject
 {
 
-    public string name;
+    public string itemName;
 
     public virtual void Use(GameObject userPlayer) { }
 
